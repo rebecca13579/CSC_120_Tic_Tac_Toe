@@ -31,7 +31,8 @@ def check_win():
         print("You won!")
         game_over()
     else:
-        mark_board(player_num)
+        #mark_board(player_num)
+        pass
 
 def mark_board(player):
     
@@ -54,14 +55,14 @@ def mark_board(player):
                         lst[column_num-1] = "X"
                         played = 1
                         print_board()
-                        player = 2
+                        #player = 2
                         check_win()
                         
                     else:
                         lst[column_num-1] = "0"
                         played = 1
                         print_board()
-                        player = 1
+                        #player = 1
                         check_win()
                         
             
@@ -94,6 +95,12 @@ player_num = 1
 
 while gameover == 0:
     mark_board(player_num)
+    if player_num == 1:
+        player_num = 2
+    else:
+        player_num = 1
+    print("Player number is now",player_num,".")
+    
 
         
 
