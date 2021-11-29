@@ -37,16 +37,29 @@ def mark_board(player):
     
     played = 0
     
-    while played == 0:        
+    while played == 0:
+        
         print("Player number",player,"please make your move.")
-        column_num = int(input("Please enter the column number (1-3):"))
-        #not sure why this won't work:
-        #while column_num < 1 or column_num > 3 or type(column_num) != int:
-        while column_num < 1 or column_num > 3:
-            column_num = int(input("Please enter a valid column number (1-3):"))
-        row_num = int(input("Please enter the row number (1-3):"))
-        while row_num < 1 or row_num > 3:
-            row_num = int(input("Please enter a valid column number (1-3):"))
+        
+        while True:
+            try: 
+                column_num = int(input("Please enter a column number (1-3):"))
+            except ValueError:
+                print("Invalid entry.") # message about not an integer
+                continue
+            if 1 <= column_num <= 3:
+                break
+            print("Please enter a column number between 1 and 3")
+            
+        while True:
+            try: 
+                row_num = int(input("Please enter a row number (1-3):"))
+            except ValueError:
+                print("Invalid entry.") # message about not an integer
+                continue
+            if 1 <= row_num <= 3:
+                break
+            print("Invalid entry") 
 
         for index, lst in enumerate(board):
             if index == row_num - 1:
@@ -67,7 +80,7 @@ def mark_board(player):
                 else:
                     print("Space is already taken. Please play again")
                     
-    return player
+    #return player
 
 def game_over():
     print("Thank you for playing tic tac toe!")
